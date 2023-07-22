@@ -22,13 +22,14 @@ app.get("/:plid", async (c) => {
     author: course.director,
   });
 
+  const time = course.ltime; // unix timestamp
   for (const video of course.videoList) {
     feed.addItem({
-      title: video.title,
+      title: `第${video.pNumber}集 ${video.title}`,
       description: video.description,
       url: video.webUrl,
       guid: video.mid,
-      date: new Date(),
+      date: new Date(time + video.pNumber * 1000 * 60 * 60),
       enclosure: {
         url: video.mp4SdUrl,
       },
