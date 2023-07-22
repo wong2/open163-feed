@@ -25,7 +25,7 @@ app.get("/:plid", async (c) => {
   const time = course.ltime; // unix timestamp
   for (const video of course.videoList) {
     feed.addItem({
-      title: `第${video.pNumber}集 ${video.title}`,
+      title: `【第${video.pNumber}集】${video.title}`,
       description: video.description,
       url: video.webUrl,
       guid: video.mid,
